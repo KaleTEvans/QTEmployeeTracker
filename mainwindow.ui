@@ -27,6 +27,16 @@
      <string>Database Connection</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEditQuery">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>300</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
