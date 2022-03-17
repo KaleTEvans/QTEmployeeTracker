@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "tablestartup.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,7 +18,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -37,25 +37,21 @@ void MainWindow::on_pushButton_clicked()
 
         clearValues();
 
-        QString query = "CREATE TABLE department ("
-                        "id int identity(1,1) primary key,"
-                        "name VARCHAR(30));";
+        TableStartup setTables;
 
-        QSqlQuery databaseQuery;
+        setTables.setTableSchema();
+        setTables.setTableSeeds();
 
-        if (!databaseQuery.exec(query)) {
-            qDebug() << "Error creating table:" << databaseQuery.lastError().text() << "\n";
+
+//        databaseQuery.prepare("INSERT INTO department (name) VALUES (:name)");
+//        databaseQuery.bindValue(":name", "Sales");
+//        databaseQuery.exec();
+
+        QSqlQuery qry("SELECT name FROM department");
+        while (qry.next()) {
+            QString name = qry.value(0).toString();
+            qDebug() << "Data: " << name;
         }
-
-        databaseQuery.prepare("INSERT INTO department (name) VALUES (:name)");
-        databaseQuery.bindValue(":name", "Sales");
-        databaseQuery.exec();
-
-//        QSqlQuery qry("SELECT name FROM department");
-//        while (qry.next()) {
-//            QString name = qry.value(0).toString();
-//            qDebug() << "Data: " << name;
-//        }
     } else {
         QMessageBox::information(this, "Not Connected", "Database is NOT Connected");
     }

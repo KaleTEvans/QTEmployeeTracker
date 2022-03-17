@@ -18,7 +18,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     void clearValues();
-    void setTableSchema();
     ~MainWindow();
 
 private slots:
