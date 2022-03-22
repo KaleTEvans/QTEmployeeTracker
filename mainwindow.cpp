@@ -9,52 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 }
 
-void MainWindow::clearValues()
-{
-    ui->lineEditQuery->clear();
-}
-
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::on_pushButton_clicked()
-{
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    // connection properties
-    QString servername = "DESKTOP-FRBUP45\\SQLEXPRESS";
-    QString dbname = "employeeDB";
-
-    db.setConnectOptions();
-
-    QString dsn = QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(servername).arg(dbname);
-
-    db.setDatabaseName(dsn);
-
-    if (db.open()) {
-        QMessageBox::information(this, "Connection", "Database Connected Successfully");
-
-        clearValues();
-
-        TableStartup setTables;
-
-        setTables.setTableSchema();
-        setTables.setTableSeeds();
-
-
-//        databaseQuery.prepare("INSERT INTO department (name) VALUES (:name)");
-//        databaseQuery.bindValue(":name", "Sales");
-//        databaseQuery.exec();
-
-        QSqlQuery qry("SELECT name FROM department");
-        while (qry.next()) {
-            QString name = qry.value(0).toString();
-            qDebug() << "Data: " << name;
-        }
-    } else {
-        QMessageBox::information(this, "Not Connected", "Database is NOT Connected");
-    }
-
 }
 

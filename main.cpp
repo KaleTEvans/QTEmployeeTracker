@@ -1,11 +1,12 @@
 #include "mainwindow.h"
+#include "dbconnectdialogue.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    DBConnectDialogue w;
     w.show();
     return a.exec();
 }
