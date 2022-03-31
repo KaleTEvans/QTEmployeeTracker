@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QtGui>
+#include <QInputDialog>
 #include "tablestartup.h"
 
 
@@ -23,10 +24,15 @@ public:
 
 private slots:
     void on_addDept_clicked();
+    void on_removeDept_clicked();
+    void on_editDept_clicked();
+    void on_tableWidget_cellClicked(int row, int column);
 
 private:
     Ui::Departments *ui;
-
+    QSqlQuery *dptQuery;
+    bool cellClicked;
+    int rowSelected;
 };
 
 #endif // DEPARTMENTS_H
