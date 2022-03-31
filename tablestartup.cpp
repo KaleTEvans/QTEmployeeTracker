@@ -5,6 +5,22 @@ TableStartup::TableStartup()
 
 }
 
+QSqlDatabase TableStartup::connectToDb()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+    // connection properties
+    QString servername = "DESKTOP-FRBUP45\\SQLEXPRESS";
+    QString dbname = "employeeDB";
+
+    db.setConnectOptions();
+
+    QString dsn = QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(servername).arg(dbname);
+
+    db.setDatabaseName(dsn);
+
+    return db;
+}
+
 void TableStartup::setTableSchema()
 {
     QSqlQuery dbQuery;

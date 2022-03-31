@@ -9,6 +9,7 @@
 #include <iostream>
 #include "tablestartup.h"
 #include "mainwindow.h"
+#include "departments.h"
 
 namespace Ui {
 class DBConnectDialogue;
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::DBConnectDialogue *ui;
     MainWindow *mainWindow;
+    Departments *department;
 };
 
 #endif // DBCONNECTDIALOGUE_H

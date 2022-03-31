@@ -15,20 +15,11 @@ DBConnectDialogue::~DBConnectDialogue()
 
 void DBConnectDialogue::on_pushButton_clicked()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    // connection properties
-    QString servername = "DESKTOP-FRBUP45\\SQLEXPRESS";
-    QString dbname = "employeeDB";
+    TableStartup setTables;
+    QSqlDatabase db = setTables.connectToDb();
 
-    db.setConnectOptions();
-
-    QString dsn = QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(servername).arg(dbname);
-
-    db.setDatabaseName(dsn);
 
     if (db.open()) {
-        TableStartup setTables;
-
         setTables.setTableSchema();
         setTables.setTableSeeds();
         \

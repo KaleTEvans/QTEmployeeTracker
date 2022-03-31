@@ -9,6 +9,7 @@ class TableStartup
 public:
     TableStartup();
     // Schema and Seed functions
+    QSqlDatabase connectToDb();
     void setTableSchema();
     void setTableSeeds();
 };

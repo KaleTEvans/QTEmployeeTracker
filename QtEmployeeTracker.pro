@@ -10,17 +10,20 @@ CONFIG += c++11
 
 SOURCES += \
     dbconnectdialogue.cpp \
+    departments.cpp \
     main.cpp \
     mainwindow.cpp \
     tablestartup.cpp
 
 HEADERS += \
     dbconnectdialogue.h \
+    departments.h \
     mainwindow.h \
     tablestartup.h
 
 FORMS += \
     dbconnectdialogue.ui \
+    departments.ui \
     mainwindow.ui
 
 # Default rules for deployment.

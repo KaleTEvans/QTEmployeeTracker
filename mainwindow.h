@@ -6,6 +6,8 @@
 #include <QSqlDatabase>
 #include <QMessageBox>
 #include <iostream>
+#include <QTabWidget>
+#include "departments.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,13 +19,13 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    void clearValues();
     ~MainWindow();
 
 private slots:
 
 private:
     Ui::MainWindow *ui;
-
+    QTabWidget *tabSelect;
+    Departments *departments;
 };
 #endif // MAINWINDOW_H
