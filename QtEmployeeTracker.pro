@@ -13,18 +13,21 @@ SOURCES += \
     departments.cpp \
     main.cpp \
     mainwindow.cpp \
+    roles.cpp \
     tablestartup.cpp
 
 HEADERS += \
     dbconnectdialogue.h \
     departments.h \
     mainwindow.h \
+    roles.h \
     tablestartup.h
 
 FORMS += \
     dbconnectdialogue.ui \
     departments.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    roles.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

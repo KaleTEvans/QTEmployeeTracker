@@ -9,10 +9,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     // set up widgets
     departments = new Departments();
+    roles = new Roles();
     // add tabs with the page widgets
     ui->tabWidget->addTab(departments, "Departments");
+    ui->tabWidget->addTab(roles, "Roles");
     // call member functions to display the tables
     departments->displayTable();
+    roles->displayTable();
 }
 
 MainWindow::~MainWindow()

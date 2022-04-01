@@ -8,6 +8,7 @@
 #include <iostream>
 #include <QTabWidget>
 #include "departments.h"
+#include "roles.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,5 +28,6 @@ private:
     Ui::MainWindow *ui;
     QTabWidget *tabSelect;
     Departments *departments;
+    Roles *roles;
 };
 #endif // MAINWINDOW_H
