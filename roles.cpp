@@ -1,5 +1,6 @@
 #include "roles.h"
 #include "ui_roles.h"
+#include <QAbstractItemView>
 
 Roles::Roles(QWidget *parent) :
     QWidget(parent),
@@ -20,6 +21,8 @@ void Roles::displayTable()
 {
     //clear table and refresh when updating values
     ui->tableWidget->setRowCount(0);
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
     QString str = "SELECT * FROM roles";
     if (!roleQuery->exec(str)) {
@@ -52,3 +55,17 @@ void Roles::displayTable()
         rowCount++;
     }
 }
+
+void Roles::onOKButtonClicked()
+{
+    delete roleInput;
+    displayTable();
+}
+
+void Roles::on_addRole_clicked()
+{
+    roleInput = new RoleInput(this);
+    QObject::connect(roleInput, SIGNAL(okButton()), this, SLOT(onOKButtonClicked()));
+    roleInput->show();
+}
+

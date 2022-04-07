@@ -8,6 +8,8 @@
 #include <QtGui>
 #include <QInputDialog>
 #include "tablestartup.h"
+#include "roleinputdialogue.h"
+#include "roleinput.h"
 
 namespace Ui {
 class Roles;
@@ -22,11 +24,17 @@ public:
     ~Roles();
     void displayTable();
 
+private slots:
+    void on_addRole_clicked();
+    void onOKButtonClicked();
+
 private:
     Ui::Roles *ui;
     QSqlQuery *roleQuery;
     bool cellClicked;
     int rowSelected;
+
+    RoleInput *roleInput;
 };
 
 #endif // ROLES_H

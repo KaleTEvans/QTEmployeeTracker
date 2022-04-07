@@ -21,6 +21,9 @@ void Departments::displayTable()
     //clear table and refresh when updating values
     ui->tableWidget->setRowCount(0);
 
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+
     QString str = "SELECT * FROM department";
     if (!dptQuery->exec(str)) {
         qDebug() << "Query execution failed";

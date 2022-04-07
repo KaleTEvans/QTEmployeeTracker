@@ -13,6 +13,7 @@ SOURCES += \
     departments.cpp \
     main.cpp \
     mainwindow.cpp \
+    roleinput.cpp \
     roles.cpp \
     tablestartup.cpp
 
@@ -20,6 +21,7 @@ HEADERS += \
     dbconnectdialogue.h \
     departments.h \
     mainwindow.h \
+    roleinput.h \
     roles.h \
     tablestartup.h
 
@@ -27,6 +29,7 @@ FORMS += \
     dbconnectdialogue.ui \
     departments.ui \
     mainwindow.ui \
+    roleinput.ui \
     roles.ui
 
 # Default rules for deployment.
