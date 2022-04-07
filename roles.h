@@ -33,6 +33,11 @@ private:
     QSqlQuery *roleQuery;
     bool cellClicked;
     int rowSelected;
+    // variables to store input values
+    QString title;
+    QString salary;
+    int departmentId;
+    bool isEdit;
 
     RoleInput *roleInput;
 };

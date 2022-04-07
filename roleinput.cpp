@@ -26,22 +26,22 @@ void RoleInput::on_okButton_clicked()
     salaryValue = ui->salaryEdit->displayText();
     departmentValue = ui->departmentEdit->value();
 
-    if (!titleValue.isEmpty() && !salaryValue.isEmpty()) {
-        QSqlQuery query;
-        query.prepare("INSERT INTO roles (title, salary, department_id) VALUES (?,?,?)");
-        query.addBindValue(titleValue);
-        query.addBindValue(salaryValue);
-        query.addBindValue(departmentValue);
-
-        if (!query.exec()) {
-            qDebug() << "Query execution failed";
-            return;
-        }
-    }
-
     emit okButton();
 }
 
+QString RoleInput::getTitle()
+{
+    return titleValue;
+}
 
+QString RoleInput::getSalary()
+{
+    return salaryValue;
+}
+
+int RoleInput::getDeptValue()
+{
+    return departmentValue;
+}
 
 

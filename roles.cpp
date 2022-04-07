@@ -10,6 +10,7 @@ Roles::Roles(QWidget *parent) :
     roleQuery = new QSqlQuery();
     cellClicked = false;
     rowSelected = 1000;
+    isEdit = false;
 }
 
 Roles::~Roles()
@@ -58,7 +59,24 @@ void Roles::displayTable()
 
 void Roles::onOKButtonClicked()
 {
+    title = roleInput->getTitle();
+    salary = roleInput->getSalary();
+    departmentId = roleInput->getDeptValue();
     delete roleInput;
+    // determine whether the button was clicked to edit or add new item
+    if (!isEdit && !title.isEmpty() && !salary.isEmpty()) {
+         QSqlQuery query;
+         query.prepare("INSERT INTO roles (title, salary, department_id) VALUES (?,?,?)");
+         query.addBindValue(title);
+         query.addBindValue(salary);
+         query.addBindValue(departmentId);
+
+         if (!query.exec()) {
+             qDebug() << "Query execution failed";
+             return;
+             }
+    }
+    // refresh table
     displayTable();
 }
 
