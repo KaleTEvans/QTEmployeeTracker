@@ -27,6 +27,8 @@ public:
 private slots:
     void on_addRole_clicked();
     void onOKButtonClicked();
+    void on_deleteRole_clicked();
+    void on_tableWidget_cellClicked(int row, int column);
 
 private:
     Ui::Roles *ui;
@@ -37,7 +39,6 @@ private:
     QString title;
     QString salary;
     int departmentId;
-    bool isEdit;
 
     RoleInput *roleInput;
 };

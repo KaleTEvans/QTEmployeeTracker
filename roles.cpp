@@ -10,7 +10,6 @@ Roles::Roles(QWidget *parent) :
     roleQuery = new QSqlQuery();
     cellClicked = false;
     rowSelected = 1000;
-    isEdit = false;
 }
 
 Roles::~Roles()
@@ -63,8 +62,7 @@ void Roles::onOKButtonClicked()
     salary = roleInput->getSalary();
     departmentId = roleInput->getDeptValue();
     delete roleInput;
-    // determine whether the button was clicked to edit or add new item
-    if (!isEdit && !title.isEmpty() && !salary.isEmpty()) {
+    if (!title.isEmpty() && !salary.isEmpty()) {
          QSqlQuery query;
          query.prepare("INSERT INTO roles (title, salary, department_id) VALUES (?,?,?)");
          query.addBindValue(title);
@@ -86,4 +84,30 @@ void Roles::on_addRole_clicked()
     QObject::connect(roleInput, SIGNAL(okButton()), this, SLOT(onOKButtonClicked()));
     roleInput->show();
 }
+
+
+void Roles::on_deleteRole_clicked()
+{
+    if (cellClicked) {
+        QSqlQuery query;
+        query.prepare("DELETE FROM roles WHERE role_id = ?");
+        query.addBindValue(rowSelected);
+        if (!query.exec()) {
+            qDebug() << "Query execution failed";
+            return;
+        }
+
+        displayTable();
+        // set cellClicked back to false
+        cellClicked = false;
+    }
+}
+
+void Roles::on_tableWidget_cellClicked(int row, int column)
+{
+    // set these values to send to button functions when clicked
+    cellClicked = true;
+    rowSelected = row+1;
+}
+
 
