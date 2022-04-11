@@ -8,7 +8,6 @@
 #include <QtGui>
 #include <QInputDialog>
 #include "headers/tablestartup.h"
-#include "headers/roleinputdialogue.h"
 #include "headers/roleinput.h"
 
 namespace Ui {

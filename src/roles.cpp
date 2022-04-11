@@ -23,6 +23,7 @@ void Roles::displayTable()
     ui->tableWidget->setRowCount(0);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     QString str = "SELECT * FROM roles";
     if (!roleQuery->exec(str)) {

@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     // call member functions to display the tables
     departments->displayTable();
     roles->displayTable();
-
+    employees->displayTable();
 }
 
 MainWindow::~MainWindow()
