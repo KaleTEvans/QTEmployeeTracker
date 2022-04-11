@@ -21,19 +21,19 @@ SOURCES += \
 HEADERS += \
     headers/dbconnectdialogue.h \
     headers/departments.h \
-    headers/employees.h \
     headers/mainwindow.h \
     headers/roleinput.h \
     headers/roles.h \
-    headers/tablestartup.h
+    headers/tablestartup.h \
+    headers/employees.h
 
 FORMS += \
     forms/dbconnectdialogue.ui \
     forms/departments.ui \
-    forms/employees.ui \
     forms/mainwindow.ui \
     forms/roleinput.ui \
-    forms/roles.ui
+    forms/roles.ui \
+    forms/employees.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

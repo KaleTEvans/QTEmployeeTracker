@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "headers/mainwindow.h"
 #include "headers/dbconnectdialogue.h"
 
 #include <QApplication>
