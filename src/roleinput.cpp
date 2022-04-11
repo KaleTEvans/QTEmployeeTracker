@@ -6,6 +6,8 @@ RoleInput::RoleInput(QWidget *parent) :
     ui(new Ui::RoleInput)
 {
     ui->setupUi(this);
+    // set window title
+    this->setWindowTitle("Add Role");
 }
 
 RoleInput::~RoleInput()

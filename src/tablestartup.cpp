@@ -79,4 +79,10 @@ void TableStartup::setTableSeeds()
                  "('Accountant', '60000', 1),"
                  "('Sales Lead', '120000', 2),"
                  "('Branch Manager', '300000', 3);");
+
+    dbQuery.exec("INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES"
+                 "('Kale', 'Evans', 1, NULL),"
+                 "('Michael', 'Scott', 4, NULL),"
+                 "('John', 'Smith', 2, 2),"
+                 "('Jake', 'Bell', 3, NULL);");
 }

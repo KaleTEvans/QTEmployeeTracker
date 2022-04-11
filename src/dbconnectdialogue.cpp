@@ -6,6 +6,8 @@ DBConnectDialogue::DBConnectDialogue(QWidget *parent) :
     ui(new Ui::DBConnectDialogue)
 {
     ui->setupUi(this);
+    // title for dialogue
+    this->setWindowTitle("Database Connect");
 }
 
 DBConnectDialogue::~DBConnectDialogue()
