@@ -7,6 +7,7 @@ Application built using QT Creator for a basic employee database. Purpose was to
 * C++
 * QT
 * qmake
+* SQL
 
 ## Images
 ![](./images/ConnectPhoto.PNG)
