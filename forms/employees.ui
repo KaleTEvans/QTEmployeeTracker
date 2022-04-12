@@ -60,9 +60,9 @@ selection-background-color: #282828;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="editManager">
+       <widget class="QPushButton" name="editRole">
         <property name="text">
-         <string>Edit Employee Manager</string>
+         <string>Edit Employee Role</string>
         </property>
        </widget>
       </item>

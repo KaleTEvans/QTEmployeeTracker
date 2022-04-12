@@ -26,7 +26,8 @@ private slots:
     void onOkButtonClicked();
     void on_addEmployee_clicked();
     void on_removeEmployee_clicked();
-    void on_editManager_clicked();
+    void on_editRole_clicked();
+    void on_tableWidget_cellClicked(int row, int column);
 
 private:
     Ui::Employees *ui;

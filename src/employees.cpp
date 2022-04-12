@@ -104,12 +104,49 @@ void Employees::on_addEmployee_clicked()
 
 void Employees::on_removeEmployee_clicked()
 {
+    if (cellClicked) {
+        QSqlQuery query;
+        query.prepare("DELETE FROM employees WHERE employee_id = ?");
+        query.addBindValue(rowSelected);
+        if (!query.exec()) {
+            qDebug() << "Query execution failed";
+            return;
+        }
 
+        displayTable();
+        cellClicked = false;
+    }
 }
 
 
-void Employees::on_editManager_clicked()
+void Employees::on_editRole_clicked()
 {
+    if (cellClicked) {
+        bool ok;
+        int newRole = QInputDialog::getInt(this, tr("Update Employee Role"), tr("Role:"),
+                                             0, INT_MIN, INT_MAX, 1, &ok);
 
+        if (ok && newRole) {
+            QSqlQuery query;
+            query.prepare("UPDATE employees SET role_id = ? WHERE employee_id = ?");
+            query.addBindValue(newRole);
+            query.addBindValue(rowSelected);
+            if (!query.exec()) {
+                qDebug() << "Query execution failed";
+                return;
+            }
+
+            displayTable();
+
+            cellClicked = false;
+        }
+    }
+}
+
+
+void Employees::on_tableWidget_cellClicked(int row, int column)
+{
+    cellClicked = true;
+    rowSelected = row+1;
 }
 
