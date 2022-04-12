@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/employeeinput.cpp \
     src/dbconnectdialogue.cpp \
     src/departments.cpp \
     src/employees.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     headers/dbconnectdialogue.h \
     headers/departments.h \
+    headers/employeeinput.h \
     headers/mainwindow.h \
     headers/roleinput.h \
     headers/roles.h \
@@ -33,7 +35,8 @@ FORMS += \
     forms/mainwindow.ui \
     forms/roleinput.ui \
     forms/roles.ui \
-    forms/employees.ui
+    forms/employees.ui \
+    forms/employeeinput.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

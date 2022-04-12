@@ -7,6 +7,7 @@
 #include <QtGui>
 #include <QInputDialog>
 #include "headers/tablestartup.h"
+#include "headers/employeeinput.h"
 
 namespace Ui {
 class Employees;
@@ -21,6 +22,12 @@ public:
     ~Employees();
     void displayTable();
 
+private slots:
+    void onOkButtonClicked();
+    void on_addEmployee_clicked();
+    void on_removeEmployee_clicked();
+    void on_editManager_clicked();
+
 private:
     Ui::Employees *ui;
     QSqlQuery *employeeQuery;
@@ -31,6 +38,8 @@ private:
     QString lastName;
     int roleId;
     int managerId;
+
+    EmployeeInput *employeeInput;
 };
 
 #endif // EMPLOYEES_H

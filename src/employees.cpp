@@ -44,18 +44,72 @@ void Employees::displayTable()
         QTableWidgetItem *firstName = new QTableWidgetItem;
         QTableWidgetItem *lastName = new QTableWidgetItem;
         QTableWidgetItem *roleId = new QTableWidgetItem;
-        QTableWidgetItem *departmentId = new QTableWidgetItem;
+        QTableWidgetItem *managerId = new QTableWidgetItem;
 
         firstName->setText(employeeQuery->value(1).toString());
         lastName->setText(employeeQuery->value(2).toString());
         roleId->setText(employeeQuery->value(3).toString());
-        departmentId->setText(employeeQuery->value(4).toString());
+        // if the manager value is null, we should add N/A here
+        if (employeeQuery->value(4) != NULL) {
+            managerId->setText(employeeQuery->value(4).toString());
+        } else {
+            managerId->setText("N/A");
+        }
 
         ui->tableWidget->setItem(rowCount,1,firstName);
         ui->tableWidget->setItem(rowCount,2,lastName);
         ui->tableWidget->setItem(rowCount,3,roleId);
-        ui->tableWidget->setItem(rowCount,4,departmentId);
+        ui->tableWidget->setItem(rowCount,4,managerId);
 
         rowCount++;
     }
 }
+
+void Employees::onOkButtonClicked()
+{
+    firstName = employeeInput->getFirstName();
+    lastName = employeeInput->getLastName();
+    roleId = employeeInput->getRole();
+    managerId = employeeInput->getManager();
+    delete employeeInput;
+
+    if (!firstName.isEmpty() && !lastName.isEmpty()) {
+        QSqlQuery query;
+        query.prepare("INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)");
+        query.addBindValue(firstName);
+        query.addBindValue(lastName);
+        query.addBindValue(roleId);
+        if (!managerId) {
+            // equivalent of adding a null value
+            query.addBindValue(QVariant());
+        } else {
+            query.addBindValue(managerId);
+        }
+
+        if (!query.exec()) {
+            qDebug() << "Query execution failed";
+            return;
+        }
+        // refresh table
+        displayTable();
+    }
+}
+
+void Employees::on_addEmployee_clicked()
+{
+    employeeInput = new EmployeeInput(this);
+    QObject::connect(employeeInput, SIGNAL(okButton()), this, SLOT(onOkButtonClicked()));
+    employeeInput->show();
+}
+
+void Employees::on_removeEmployee_clicked()
+{
+
+}
+
+
+void Employees::on_editManager_clicked()
+{
+
+}
+
